@@ -11,7 +11,9 @@ namespace NullRunner
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private GameState _gameState;
-        
+        private GameScreen _gameScreen;
+
+
         private KeyboardState _previousKeyBoardState;
 
         public NullRunner() 
@@ -19,6 +21,9 @@ namespace NullRunner
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 600;
         }
 
         protected override void Initialize() 
@@ -33,6 +38,7 @@ namespace NullRunner
         protected override void LoadContent()
         {
             _gameState = new GameState();
+            _gameScreen = new GameScreen();
             _gameState.DrawStartingHands(5);
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -92,10 +98,27 @@ namespace NullRunner
         protected override void Draw(GameTime gameTime) 
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            
+            _spriteBatch.Begin();
+            
+            
+            DrawRectangle(_gameScreen.RunnerZone, Color.WhiteSmoke);
+            DrawRectangle(_gameScreen.GripZone, _gameScreen.RunnerColor);
+            
+            DrawRectangle(_gameScreen.CorpZone, Color.Black);
+            DrawRectangle(_gameScreen.HQZone, _gameScreen.CorpColor);
 
-            // TODO: Add your drawing code here
+            _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void DrawRectangle(Rectangle rectangle, Color color)
+        {
+            Texture2D pixelTexture = new Texture2D(GraphicsDevice, 1, 1);
+            pixelTexture.SetData(new[] {Color.White});
+
+            _spriteBatch.Draw(pixelTexture, new Vector2(rectangle.X, rectangle.Y), rectangle, color);
         }
     }
 }

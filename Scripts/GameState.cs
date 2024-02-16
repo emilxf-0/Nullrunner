@@ -53,6 +53,32 @@ public class GameState
         }
     }
 
+    public void Init()
+    {
+        RunnerCredits = 5;
+        CorpCredits = 5;
+        RunnerClicks = 4;
+        CorpClicks = 3;
+        RunnerTurn = false;
+        CorpTurn = true;
+        GameOver = false;
+        RunnerWin = false;
+        CorpWin = false;
+        RunnerAction = false;
+        CorpAction = false;
+        RunnerActionComplete = false;
+        CorpActionComplete = false;
+    }
+
+    public void DrawCardFromDeck(Deck deck, List<Card> hand)
+    {
+        Card card = deck.DrawCard();
+        if (card != null)
+        {
+            hand.Add(card);
+        }
+    }
+
     public void DrawStartingHands(int numberOfCards)
     {
         for (int i = 0; i < numberOfCards; i++)
@@ -62,6 +88,21 @@ public class GameState
         }
     }
 
+    public void EndTurn()
+    {
+        if (RunnerTurn)
+        {
+            RunnerTurn = false;
+            CorpTurn = true;
+            CorpClicks = 3;
+        }
+        else if (CorpTurn)
+        {
+            CorpTurn = false;
+            RunnerTurn = true;
+            RunnerClicks = 4;
+        }
+    }
 
 }
 
