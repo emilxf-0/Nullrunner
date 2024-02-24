@@ -1,0 +1,27 @@
+{
+  "UserEvents": {
+    "emilx": [
+      {
+        "NewName": "testscreen.RunnerArea",
+        "OldName": "testscreen.ColoredRectangleInstance",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2024-02-23T12:01:23.7083324Z"
+      },
+      {
+        "NewName": "testscreen.RunnerArea",
+        "OldName": "testscreen.RunnerArea",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2024-02-23T12:07:44.4295929Z"
+      },
+      {
+        "NewName": "testscreen.RunnerZone",
+        "OldName": "testscreen.RunnerArea",
+        "ElementType": "Screens",
+        "EventType": 7,
+        "TimestampUtc": "2024-02-23T12:14:09.9879455Z"
+      }
+    ]
+  }
+}

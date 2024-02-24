@@ -1,8 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
+using Gum.DataTypes;
+using Gum.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameGum.GueDeriving;
+using RenderingLibrary;
+using System.Linq;
+using Gum.Wireframe;
+using GumRuntime;
 
 namespace NullRunner 
 {
@@ -12,7 +19,9 @@ namespace NullRunner
         private SpriteBatch _spriteBatch;
         private GameState _gameState;
         private GameScreen _gameScreen;
+        private GraphicalUiElement _gumScreen;
 
+        private GraphicalUiElement _runnerZone;
 
         private KeyboardState _previousKeyBoardState;
 
@@ -30,9 +39,21 @@ namespace NullRunner
         {
             // TODO: Add your initialization logic here
 
-            _previousKeyBoardState = Keyboard.GetState();
-
             base.Initialize();
+            SystemManagers.Default = new SystemManagers(); 
+            SystemManagers.Default.Initialize(_graphics.GraphicsDevice, fullInstantiation: true);
+
+
+
+            var gumProject = GumProjectSave.Load("gum/ui.gumx", out GumLoadResult result);
+            ObjectFinder.Self.GumProjectSave = gumProject;
+            gumProject.Initialize();
+
+            // This assumes that your project has at least 1 screen
+            _gumScreen = gumProject.Screens.First().ToGraphicalUiElement(SystemManagers.Default, addToManagers: true);
+            _runnerZone = _gumScreen.GetGraphicalUiElementByName("RunnerZone");
+
+            _previousKeyBoardState = Keyboard.GetState();
         }
 
         protected override void LoadContent()
@@ -48,6 +69,12 @@ namespace NullRunner
 
         protected override void Update(GameTime gameTime) 
         {
+            SystemManagers.Default?.Activity(gameTime.ElapsedGameTime.TotalSeconds);
+
+
+            //move the ui element upwards
+            _runnerZone.Y -= 1;
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
@@ -98,17 +125,20 @@ namespace NullRunner
         protected override void Draw(GameTime gameTime) 
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
-            _spriteBatch.Begin();
-            
-            
-            DrawRectangle(_gameScreen.RunnerZone, Color.WhiteSmoke);
-            DrawRectangle(_gameScreen.GripZone, _gameScreen.RunnerColor);
-            
-            DrawRectangle(_gameScreen.CorpZone, Color.Black);
-            DrawRectangle(_gameScreen.HQZone, _gameScreen.CorpColor);
+            SystemManagers.Default?.Draw();
 
-            _spriteBatch.End();
+
+            //_spriteBatch.Begin();
+
+
+            ////DrawRectangle(_gameScreen.RunnerZone, Color.WhiteSmoke);
+            //DrawRectangle(_gameScreen.GripZone, _gameScreen.RunnerColor);
+            //DrawRectangle(_gameScreen.HeapZone, _gameScreen.RunnerColor);
+
+            //DrawRectangle(_gameScreen.CorpZone, Color.Black);
+            //DrawRectangle(_gameScreen.HQZone, _gameScreen.CorpColor);
+
+            //_spriteBatch.End();
 
             base.Draw(gameTime);
         }
