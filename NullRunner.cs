@@ -19,10 +19,7 @@ namespace NullRunner
         private SpriteBatch _spriteBatch;
         private GameState _gameState;
         private GameScreen _gameScreen;
-        private GraphicalUiElement _gumScreen;
-
-        private GraphicalUiElement _runnerZone;
-
+        private UiManager _uiManager;
         private KeyboardState _previousKeyBoardState;
 
         public NullRunner() 
@@ -31,8 +28,8 @@ namespace NullRunner
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _graphics.PreferredBackBufferWidth = 800;
-            _graphics.PreferredBackBufferHeight = 600;
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
         }
 
         protected override void Initialize() 
@@ -41,19 +38,10 @@ namespace NullRunner
 
             base.Initialize();
             SystemManagers.Default = new SystemManagers(); 
+            _uiManager = new UiManager();
             SystemManagers.Default.Initialize(_graphics.GraphicsDevice, fullInstantiation: true);
-
-
-
-            var gumProject = GumProjectSave.Load("gum/ui.gumx", out GumLoadResult result);
-            ObjectFinder.Self.GumProjectSave = gumProject;
-            gumProject.Initialize();
-
-            // This assumes that your project has at least 1 screen
-            _gumScreen = gumProject.Screens.First().ToGraphicalUiElement(SystemManagers.Default, addToManagers: true);
-            _runnerZone = _gumScreen.GetGraphicalUiElementByName("RunnerZone");
-
             _previousKeyBoardState = Keyboard.GetState();
+            _uiManager.Init();
         }
 
         protected override void LoadContent()
@@ -70,11 +58,9 @@ namespace NullRunner
         protected override void Update(GameTime gameTime) 
         {
             SystemManagers.Default?.Activity(gameTime.ElapsedGameTime.TotalSeconds);
+            _uiManager.Update();
 
-
-            //move the ui element upwards
-            _runnerZone.Y -= 1;
-
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
@@ -126,8 +112,6 @@ namespace NullRunner
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             SystemManagers.Default?.Draw();
-
-
             //_spriteBatch.Begin();
 
 

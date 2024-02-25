@@ -11,6 +11,9 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Content\gum\CardInstance.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
   </ItemGroup>
@@ -29,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CardLists\" />
+    <Folder Include="Content\gum\Components\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Content\*.*">

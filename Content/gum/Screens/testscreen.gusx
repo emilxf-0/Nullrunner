@@ -4,6 +4,54 @@
   <State>
     <Name>Default</Name>
     <Variable>
+      <Type>string</Type>
+      <Name>Card.Parent</Name>
+      <Value xsi:type="xsd:string">RunnerZone</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>Card.Rotation</Name>
+      <Value xsi:type="xsd:float">0</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>Card.X</Name>
+      <Value xsi:type="xsd:float">0</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>HorizontalAlignment</Type>
+      <Name>Card.X Origin</Name>
+      <Value xsi:type="xsd:int">1</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>Card.Y</Name>
+      <Value xsi:type="xsd:float">454</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>VerticalAlignment</Type>
+      <Name>Card.Y Origin</Name>
+      <Value xsi:type="xsd:int">2</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>CardInstanceInstance.X</Name>
+      <Value xsi:type="xsd:float">719</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
+      <Type>float</Type>
+      <Name>CardInstanceInstance.Y</Name>
+      <Value xsi:type="xsd:float">228</Value>
+      <SetsValue>true</SetsValue>
+    </Variable>
+    <Variable>
       <Type>int</Type>
       <Name>RunnerZone.Blue</Name>
       <Value xsi:type="xsd:int">84</Value>
@@ -18,7 +66,7 @@
     <Variable>
       <Type>float</Type>
       <Name>RunnerZone.Height</Name>
-      <Value xsi:type="xsd:float">223</Value>
+      <Value xsi:type="xsd:float">540</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -36,7 +84,7 @@
     <Variable>
       <Type>float</Type>
       <Name>RunnerZone.Width</Name>
-      <Value xsi:type="xsd:float">800</Value>
+      <Value xsi:type="xsd:float">1920</Value>
       <SetsValue>true</SetsValue>
     </Variable>
     <Variable>
@@ -79,6 +127,16 @@
   <Instance>
     <Name>RunnerZone</Name>
     <BaseType>ColoredRectangle</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>Card</Name>
+    <BaseType>ColoredRectangle</BaseType>
+    <DefinedByBase>false</DefinedByBase>
+  </Instance>
+  <Instance>
+    <Name>CardInstanceInstance</Name>
+    <BaseType>CardInstance</BaseType>
     <DefinedByBase>false</DefinedByBase>
   </Instance>
   <Behaviors />

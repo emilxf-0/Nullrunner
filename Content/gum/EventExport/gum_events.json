@@ -1,26 +1,68 @@
 {
   "UserEvents": {
-    "emilx": [
+    "46735": [
       {
-        "NewName": "testscreen.RunnerArea",
+        "NewName": "testscreen.ColoredRectangleInstance",
+        "OldName": null,
+        "ElementType": "Screens",
+        "EventType": 5,
+        "TimestampUtc": "2024-02-24T15:40:18.2855845Z"
+      },
+      {
+        "NewName": "testscreen.Card",
         "OldName": "testscreen.ColoredRectangleInstance",
         "ElementType": "Screens",
         "EventType": 7,
-        "TimestampUtc": "2024-02-23T12:01:23.7083324Z"
+        "TimestampUtc": "2024-02-24T16:26:01.0074649Z"
       },
       {
-        "NewName": "testscreen.RunnerArea",
-        "OldName": "testscreen.RunnerArea",
-        "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2024-02-23T12:07:44.4295929Z"
+        "NewName": "Card",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2024-02-24T16:51:25.2699007Z"
       },
       {
-        "NewName": "testscreen.RunnerZone",
-        "OldName": "testscreen.RunnerArea",
+        "NewName": "CardInstance",
+        "OldName": "Card",
+        "ElementType": "Components",
+        "EventType": 2,
+        "TimestampUtc": "2024-02-25T16:21:33.65656Z"
+      },
+      {
+        "NewName": "testscreen.CardInstanceInstance",
+        "OldName": null,
         "ElementType": "Screens",
-        "EventType": 7,
-        "TimestampUtc": "2024-02-23T12:14:09.9879455Z"
+        "EventType": 5,
+        "TimestampUtc": "2024-02-25T17:49:48.4197347Z"
+      },
+      {
+        "NewName": "CardInstance (ColoredRectangle).ColoredRectangleInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2024-02-25T17:55:12.4028877Z"
+      },
+      {
+        "NewName": null,
+        "OldName": "CardInstance",
+        "ElementType": "Components",
+        "EventType": 1,
+        "TimestampUtc": "2024-02-25T17:56:58.4218152Z"
+      },
+      {
+        "NewName": "CardInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 0,
+        "TimestampUtc": "2024-02-25T17:57:12.6493237Z"
+      },
+      {
+        "NewName": "CardInstance (Container).ColoredRectangleInstance",
+        "OldName": null,
+        "ElementType": "Components",
+        "EventType": 5,
+        "TimestampUtc": "2024-02-25T17:57:20.1889056Z"
       }
     ]
   }
