@@ -60,6 +60,7 @@ namespace NullRunner
             SystemManagers.Default?.Activity(gameTime.ElapsedGameTime.TotalSeconds);
             _uiManager.Update();
 
+
             
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
